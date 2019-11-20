@@ -20,21 +20,23 @@ let refs = {
 
 // get the affinities from local storage and sort them into a sorted array, sorted.
 let affinity = {
-  Mens: window.localStorage["Men's"] ? window.localStorage["Men's"] : 0,
-  Womens: window.localStorage["Women's"] ? window.localStorage["Women's"] : 0,
-  Beauty: window.localStorage.Beauty ? window.localStorage.Beauty : 0,
-  Home: window.localStorage.Home ? window.localStorage.Home : 0,
-  Lifestyle: window.localStorage.Lifestyle ? window.localStorage.Lifestyle : 0,
+  Mens: window.localStorage["Men's"],
+  Womens: window.localStorage["Women's"],
+  Beauty: window.localStorage.Beauty,
+  Home: window.localStorage.Home,
+  Lifestyle: window.localStorage.Lifestyle,
 };
 
 let sorted = [];
 for (let prop in affinity) {
-  sorted.push([prop, affinity[prop]]);
+  if (affinity[prop]) sorted.push([prop, affinity[prop]]);
 }
 
 sorted.sort(function(a, b) {
   return a[1] - b[1];
 });
+
+console.log(sorted);
 
 // attach them to the DOM in order
 for (let i = 0; i < modules.length; i++) {
