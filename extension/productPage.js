@@ -2,12 +2,21 @@ let path = document.getElementsByClassName('c-breadcrumb')[0].outerText;
 
 let category = path.split(' ')[0];
 
-const addToStorage = cat => {
+const increaseStorage = cat => {
   window.localStorage[cat]
     ? window.localStorage[cat]++
     : (window.localStorage[cat] = 1);
 };
-addToStorage(category);
+increaseStorage(category);
+
+let addToCart = Array.from(
+  document.getElementsByClassName('js-add-to-cart')
+)[0];
+const increaeByThree = cat => {
+  let num = +window.localStorage[cat];
+  window.localStorage[cat] = num + 3;
+};
+addToCart.addEventListener('click', () => increaeByThree(category));
 
 let affinity = {
   Mens: window.localStorage["Men's"],
@@ -16,6 +25,6 @@ let affinity = {
   Home: window.localStorage.Home,
   Lifestyle: window.localStorage.Lifestyle,
 };
+
 console.log('Chrome Extension Output!');
-console.log('Category:  ', category);
-console.log('Affinity:  ', affinity);
+console.log(affinity);
