@@ -18,13 +18,15 @@ let refs = {
   Home: home[0].innerHTML,
 };
 
-// get the affinities from local storage and sort them into a sorted array, sorted.
+// get the affinities from local storage and sort them into a sorted array, sorted.  If no affinity exists or only some of the affinities exist, organize the rest according to Urban Outfitters original layout
 let affinity = {
-  Mens: window.localStorage["Men's"] ? window.localStorage["Men's"] : 0,
-  Womens: window.localStorage["Women's"] ? window.localStorage["Women's"] : 0,
-  Beauty: window.localStorage.Beauty ? window.localStorage.Beauty : 0,
-  Home: window.localStorage.Home ? window.localStorage.Home : 0,
-  Lifestyle: window.localStorage.Lifestyle ? window.localStorage.Lifestyle : 0,
+  Mens: window.localStorage["Men's"] ? window.localStorage["Men's"] : 0.8,
+  Womens: window.localStorage["Women's"] ? window.localStorage["Women's"] : 0.9,
+  Beauty: window.localStorage.Beauty ? window.localStorage.Beauty : 0.5,
+  Home: window.localStorage.Home ? window.localStorage.Home : 0.7,
+  Lifestyle: window.localStorage.Lifestyle
+    ? window.localStorage.Lifestyle
+    : 0.6,
 };
 
 let sorted = [];
