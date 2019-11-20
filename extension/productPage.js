@@ -1,30 +1,28 @@
+//I couldnt get utag_data to work so went with parsing the path at the top of each product to determine it's category
 let path = document.getElementsByClassName('c-breadcrumb')[0].outerText;
-
 let category = path.split(' ')[0];
 
-const increaseStorage = cat => {
-  window.localStorage[cat]
-    ? window.localStorage[cat]++
-    : (window.localStorage[cat] = 1);
-};
-increaseStorage(category);
-
+//Here is the reference to the add-to-cart button
 let addToCart = Array.from(
   document.getElementsByClassName('js-add-to-cart')
 )[0];
-const increaeByThree = cat => {
-  let num = +window.localStorage[cat];
-  window.localStorage[cat] = num + 3;
-};
-addToCart.addEventListener('click', () => increaeByThree(category));
 
-let affinity = {
-  Mens: window.localStorage["Men's"],
-  Womens: window.localStorage["Women's"],
-  Beauty: window.localStorage.Beauty,
-  Home: window.localStorage.Home,
-  Lifestyle: window.localStorage.Lifestyle,
+//Increase storage function that takes the category (from above), and the type (page-view or add-to-cart)
+const increaseStorage = (cat, type) => {
+  if (type === 'page-view') {
+    window.localStorage[cat]
+      ? window.localStorage[cat]++
+      : (window.localStorage[cat] = 1);
+  } else if (type === 'add-to-cart') {
+    let num = +window.localStorage[cat];
+    window.localStorage[cat] = num + 3;
+  }
 };
 
-console.log('Chrome Extension Output!');
-console.log(affinity);
+//increase the storage immediately for any page view
+increaseStorage(category, 'page-view');
+
+//Event listener for add to cart button
+addToCart.addEventListener('click', () =>
+  increaseStorage(category, 'add-to-cart')
+);
