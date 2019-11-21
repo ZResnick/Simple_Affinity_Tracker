@@ -14,3 +14,4 @@ This chrome extension tracks of Urban Outfitters shoppers, updating the new-arri
 
 1.  When adding an item to the cart, be sure to choose a size before clicking the add-item button to avoid the extension registering the add-to-cart action twice.
 2.  There is a very small delay when navigating from a product page back to the New-Arrivals page. This can be seen momentarily when the page flashes it's default layout before the extension alters the DOM.
+3.  The users affinities are always viewbale from the extensions popup. After navigating to the New-Arrivals Page at Urban Outfitters, simply click the Dynamic Yield logo to the see your current affinities. Note that there is a small delay between an action (a page view or adding an item to the cart) and the popup representing the updated affinities.
