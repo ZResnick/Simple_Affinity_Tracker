@@ -12,7 +12,6 @@ Below is thew increase storage function that takes the category (from above), an
 
 I wasn't sure what variable to name CSE_Challenge due to the 5 categories so I tried to creat an object on localStorage where I could nest the affinity values. I had trouble creating a CSE_Challenge object on window.localStorage so held the affinities directly on localStorage.
 */
-
 const increaseStorage = (cat, type) => {
   if (type === 'page-view') {
     window.localStorage[cat]
@@ -27,7 +26,29 @@ const increaseStorage = (cat, type) => {
 //Invoke the function with type === 'page-view' as to increase the storage immediately for any page view.
 increaseStorage(category, 'page-view');
 
-//Event listener for add to cart button that invokes the function with type === 'add-to-cart' as to increase the storage by 3
-addToCart.addEventListener('click', () =>
-  increaseStorage(category, 'add-to-cart')
-);
+//create a function to sync the storage so the popup will update on pageview.
+const syncStorage = () => {
+  chrome.storage.sync.set(
+    {
+      Mens: window.localStorage["Men's"] ? window.localStorage["Men's"] : 0.8,
+      Womens: window.localStorage["Women's"]
+        ? window.localStorage["Women's"]
+        : 0.9,
+      Beauty: window.localStorage.Beauty ? window.localStorage.Beauty : 0.5,
+      Home: window.localStorage.Home ? window.localStorage.Home : 0.7,
+      Lifestyle: window.localStorage.Lifestyle
+        ? window.localStorage.Lifestyle
+        : 0.6,
+    },
+    function() {
+      console.log('Storage sucessfully updated.');
+    }
+  );
+};
+syncStorage();
+
+//Event listener for add to cart button that invokes the function with type === 'add-to-cart' as to increase the storage by 3, and also invokes the sync storage function to update the popup.
+addToCart.addEventListener('click', () => {
+  increaseStorage(category, 'add-to-cart');
+  syncStorage();
+});

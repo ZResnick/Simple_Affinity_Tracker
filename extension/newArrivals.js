@@ -46,3 +46,21 @@ for (let i = 0; i < modules.length; i++) {
     modules[i].innerHTML = html;
   }
 }
+
+//Sync local storage so I can access it in the Extensions Popup
+chrome.storage.sync.set(
+  {
+    Mens: window.localStorage["Men's"] ? window.localStorage["Men's"] : 0.8,
+    Womens: window.localStorage["Women's"]
+      ? window.localStorage["Women's"]
+      : 0.9,
+    Beauty: window.localStorage.Beauty ? window.localStorage.Beauty : 0.5,
+    Home: window.localStorage.Home ? window.localStorage.Home : 0.7,
+    Lifestyle: window.localStorage.Lifestyle
+      ? window.localStorage.Lifestyle
+      : 0.6,
+  },
+  function() {
+    console.log('Storage successfuly synced.');
+  }
+);
