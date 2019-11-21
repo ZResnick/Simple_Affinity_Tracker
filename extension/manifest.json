@@ -11,5 +11,11 @@
       "matches": ["https://www.urbanoutfitters.com/new-arrivals*"],
       "js": ["newArrivals.js"]
     }
-  ]
+  ],
+  "browser_action": {
+    "default_title": "Affinity Tracker",
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": ["storage"]
 }
