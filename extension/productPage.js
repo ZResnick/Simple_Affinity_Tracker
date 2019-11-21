@@ -7,7 +7,11 @@ let addToCart = Array.from(
   document.getElementsByClassName('js-add-to-cart')
 )[0];
 
-//Increase storage function that takes the category (from above), and the type (page-view or add-to-cart)
+/*
+Increase storage function that takes the category (from above), and the type (page-view or add-to-cart)
+I wasn't sure what to name CSE_Challenge due to the 5 categories. I had trouble creating a CSE_Challenge object on window.localStorage to hold the various categories so created them on local storage directly.
+*/
+
 const increaseStorage = (cat, type) => {
   if (type === 'page-view') {
     window.localStorage[cat]
