@@ -3,12 +3,22 @@ let modules = Array.from(
   document.getElementsByClassName('dom-landing-page-modules')[0].childNodes
 ).filter(node => node.className === 'o-row   ');
 
+console.log(modules);
+
 //Get each section and assign their innerHTML to an object, refs, for easy reference.
-let mens = modules.filter(node => node.innerText.includes("Men's"));
-let womens = modules.filter(node => node.innerText.includes("Women's"));
-let beauty = modules.filter(node => node.innerText.includes('Beauty'));
-let home = modules.filter(node => node.innerText.includes('Home'));
-let lifestyle = modules.filter(node => node.innerText.includes('Lifestyle'));
+let mens = modules.filter(node =>
+  node.innerText.slice(0, 10).includes("Men's")
+);
+let womens = modules.filter(node =>
+  node.innerText.slice(0, 10).includes("Women's")
+);
+let home = modules.filter(node => node.innerText.slice(0, 10).includes('Home'));
+let beauty = modules.filter(node =>
+  node.innerText.slice(0, 10).includes('Beauty')
+);
+let lifestyle = modules.filter(node =>
+  node.innerText.slice(0, 10).includes('Lifestyle')
+);
 
 let refs = {
   Mens: mens[0].innerHTML,
@@ -17,6 +27,7 @@ let refs = {
   Lifestyle: lifestyle[0].innerHTML,
   Home: home[0].innerHTML,
 };
+console.log(beauty[0].innerHTML);
 
 // get the affinities from local storage and sort them into a sorted array, sorted.  If no affinity exists or only some of the affinities exist, organize the rest according to Urban Outfitters original layout.  To do this, I set default values according to the original layout for each category if no affinity exists.
 let affinity = {
