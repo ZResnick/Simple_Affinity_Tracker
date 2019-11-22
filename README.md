@@ -2,7 +2,7 @@
 
 ### A Sample Project by Zachary Resnick
 
-This chrome extension keeps tracks of Urban Outfitters shoppers, rearranging the new-arrivals page to match a users affinities. Viewing a page increases a users affinity for that category by 1. Adding an item to the cart increases a user's affinity for that category by 3. This extension only conders affinities for the categories Men's, Women's, Lifestyle, Beauty, and Home.
+This chrome extension keeps tracks of Urban Outfitters shoppers, rearranging the new-arrivals page to match a users affinities. Viewing a page increases a users affinity for that category by 1. Adding an item to the cart increases a user's affinity for that category by 3. This extension only considers affinities for the categories Men's, Women's, Lifestyle, Beauty, and Home.
 
 ### To add this chrome extension to your browser
 
